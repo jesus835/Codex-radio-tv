@@ -1,0 +1,18 @@
+node_modules/
+videos/
+*.log
+.DS_Store
+Thumbs.db
+youtube-cookies.txt
+cookies.txt
+tools/
+dist/
+build-output/
+*.exe
+*.zip
+*.ico
+node-portable/
+youtube-links.json
+anuncios y sicofonias/
+test-ytdlp.bat
+actualizar-core-runtime.bat

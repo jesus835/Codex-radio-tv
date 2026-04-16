@@ -1,0 +1,90 @@
+{
+  "name": "codex-radio-tv",
+  "version": "1.0.0",
+  "description": "Codex Radio TV Guatemala - Playlist Manager con YouTube y multimedia local",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "server": "node server.js",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir"
+  },
+  "keywords": [
+    "youtube",
+    "streaming",
+    "yt-dlp",
+    "video",
+    "electron",
+    "radio"
+  ],
+  "author": "Codex Guatemala",
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.8.3",
+    "express": "^4.18.2",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "electron": "^41.0.1",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.codex.radiotv",
+    "productName": "Codex Radio TV",
+    "directories": {
+      "output": "build-output"
+    },
+    "files": [
+      "main.js",
+      "server.js",
+      "youtube.html",
+      "watch.html",
+      "index.html",
+      "youtube-links.json",
+      "public/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "core-runtime.exe",
+        "to": ".",
+        "filter": ["core-runtime.exe"]
+      },
+      {
+        "from": "yt-dlp.exe",
+        "to": ".",
+        "filter": ["yt-dlp.exe"]
+      },
+      {
+        "from": "node-portable/node.exe",
+        "to": ".",
+        "filter": ["node.exe"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerSidebar": null,
+      "uninstallerSidebar": null,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Codex Radio TV"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "jesus835",
+      "repo": "Codex-radio-tv"
+    }
+  }
+}

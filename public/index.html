@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>🎥 YouTube Video Player</h1>
+            <button onclick="loginYouTube()" class="btn btn-login" title="Iniciar sesión en YouTube para evitar restricciones">
+                🔐 Iniciar Sesión en YouTube
+            </button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('stream')">Streaming Directo</button>
+            <button class="tab-button" onclick="showTab('download')">Descargar y Reproducir</button>
+            <button class="tab-button" onclick="showTab('library')">Biblioteca</button>
+        </div>
+
+        <div id="stream-tab" class="tab-content active">
+            <div class="input-section">
+                <h2>Streaming Directo</h2>
+                <p class="description">Reproduce el video sin descargarlo (más rápido)</p>
+                <div class="info-box">
+                    ℹ️ <strong>Importante:</strong> Haz clic en "🔐 Iniciar Sesión en YouTube" primero para evitar restricciones.
+                </div>
+                <input 
+                    type="text" 
+                    id="stream-url" 
+                    placeholder="Pega la URL de YouTube aquí"
+                    class="url-input"
+                >
+                <button onclick="streamVideo()" class="btn btn-primary">
+                    ▶️ Reproducir
+                </button>
+            </div>
+
+            <div id="stream-player" class="player-section" style="display: none;">
+                <h3>Reproduciendo...</h3>
+                <video id="stream-video" width="100%" controls>
+                    Tu navegador no soporta el elemento video.
+                </video>
+            </div>
+        </div>
+
+        <div id="download-tab" class="tab-content">
+            <div class="input-section">
+                <h2>Descargar y Reproducir</h2>
+                <p class="description">Descarga el video al servidor primero</p>
+                <input 
+                    type="text" 
+                    id="download-url" 
+                    placeholder="Pega la URL de YouTube aquí"
+                    class="url-input"
+                >
+                <button onclick="downloadVideo()" class="btn btn-primary">
+                    ⬇️ Descargar
+                </button>
+            </div>
+
+            <div id="download-status" class="status-section"></div>
+
+            <div id="download-player" class="player-section" style="display: none;">
+                <h3>Video Descargado</h3>
+                <video id="download-video" width="100%" controls>
+                    <source id="download-source" type="video/mp4">
+                    Tu navegador no soporta el elemento video.
+                </video>
+            </div>
+        </div>
+
+        <div id="library-tab" class="tab-content">
+            <div class="input-section">
+                <h2>Biblioteca de Videos</h2>
+                <p class="description">Videos descargados en el servidor</p>
+                <button onclick="loadLibrary()" class="btn btn-secondary">
+                    🔄 Actualizar Lista
+                </button>
+            </div>
+
+            <div id="library-list" class="library-section">
+                <p class="empty-message">Haz clic en "Actualizar Lista" para ver los videos</p>
+            </div>
+
+            <div id="library-player" class="player-section" style="display: none;">
+                <h3>Reproduciendo desde Biblioteca</h3>
+                <video id="library-video" width="100%" controls>
+                    <source id="library-source" type="video/mp4">
+                    Tu navegador no soporta el elemento video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
